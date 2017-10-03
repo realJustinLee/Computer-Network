@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/lixin/GitHub/C-Works/Computer Network/Unix Server/main.cpp
+sys/types.h
+-
+sys/socket.h
+-
+stdio.h
+-
+sys/un.h
+-
+unistd.h
+-
+stdlib.h
+-
+cstring
+-
+

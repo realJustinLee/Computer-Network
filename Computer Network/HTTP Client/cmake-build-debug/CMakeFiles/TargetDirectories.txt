@@ -1,0 +1,3 @@
+/Users/lixin/GitHub/C-Works/Computer Network/HTTP Client/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/lixin/GitHub/C-Works/Computer Network/HTTP Client/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/lixin/GitHub/C-Works/Computer Network/HTTP Client/cmake-build-debug/CMakeFiles/HTTP_Client.dir

@@ -1,0 +1,2 @@
+Options: 
+CMake: 3.8.2@/Users/lixin/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/173.2463.5/CLion 2017.3 EAP.app/Contents/bin/cmake/bin/cmake
