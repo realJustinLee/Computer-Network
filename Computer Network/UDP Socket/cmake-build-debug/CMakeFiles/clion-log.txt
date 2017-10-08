@@ -1,0 +1,4 @@
+"/Users/lixin/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/173.2941.5/CLion 2017.3 EAP.app/Contents/bin/cmake/bin/cmake" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" "/Users/lixin/GitHub/Computer-Network/Computer Network/UDP Socket"
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /Users/lixin/GitHub/Computer-Network/Computer Network/UDP Socket/cmake-build-debug
