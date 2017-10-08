@@ -37,8 +37,8 @@
           <file leaf-file-name="srcTcpSocket.c" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/srcTcpSocket.c">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="58">
-                  <caret line="73" column="59" lean-forward="false" selection-start-line="73" selection-start-column="59" selection-end-line="73" selection-end-column="59" />
+                <state relative-caret-position="234">
+                  <caret line="79" column="31" lean-forward="false" selection-start-line="79" selection-start-column="31" selection-end-line="79" selection-end-column="31" />
                   <folding>
                     <element signature="e#1752#1770#0" expanded="true" />
                   </folding>
@@ -53,8 +53,8 @@
           <file leaf-file-name="ytcpsocket.c" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/../../../SwiftSocket/Sources/ytcpsocket.c">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="294">
-                  <caret line="68" column="15" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="211" selection-end-column="0" />
+                <state relative-caret-position="416">
+                  <caret line="82" column="9" lean-forward="false" selection-start-line="82" selection-start-column="9" selection-end-line="82" selection-end-column="9" />
                   <folding>
                     <element signature="e#1691#1709#0" expanded="true" />
                   </folding>
@@ -149,12 +149,12 @@
       <workItem from="1507135233449" duration="701000" />
       <workItem from="1507135941444" duration="1203000" />
       <workItem from="1507440685276" duration="3940000" />
-      <workItem from="1507462021654" duration="5598000" />
+      <workItem from="1507462021654" duration="5717000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11442000" />
+    <option name="totallyTimeSpent" value="11561000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="989" extended-state="6" />
@@ -293,22 +293,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../../SwiftSocket/Sources/ytcpsocket.c">
+    <entry file="file://$PROJECT_DIR$/srcTcpSocket.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="68" column="15" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="211" selection-end-column="0" />
+        <state relative-caret-position="234">
+          <caret line="79" column="31" lean-forward="false" selection-start-line="79" selection-start-column="31" selection-end-line="79" selection-end-column="31" />
           <folding>
-            <element signature="e#1691#1709#0" expanded="true" />
+            <element signature="e#1752#1770#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/srcTcpSocket.c">
+    <entry file="file://$PROJECT_DIR$/../../../SwiftSocket/Sources/ytcpsocket.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="58">
-          <caret line="73" column="59" lean-forward="false" selection-start-line="73" selection-start-column="59" selection-end-line="73" selection-end-column="59" />
+        <state relative-caret-position="416">
+          <caret line="82" column="9" lean-forward="false" selection-start-line="82" selection-start-column="9" selection-end-line="82" selection-end-column="9" />
           <folding>
-            <element signature="e#1752#1770#0" expanded="true" />
+            <element signature="e#1691#1709#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -71,12 +71,13 @@ int srcTcpSocket_connect(const char *host, int port, int timeout) {
     bcopy(hostEntry->h_addr, (char *) &serverAddress.sin_addr, hostEntry->h_length);
     serverAddress.sin_family = (sa_family_t) hostEntry->h_addrtype;
     serverAddress.sin_port = htons(port);
-    socketFD = socket(hostEntry->h_addrtype,SOCK_STREAM,0);
+    socketFD = socket(hostEntry->h_addrtype, SOCK_STREAM, 0);
     srcTcpSocket_set_block(socketFD, 0);
     connect(socketFD, (struct sockaddr *) &serverAddress, sizeof(serverAddress));
     fd_set writeFD;
     struct timeval tvSelect;
     FD_ZERO(&writeFD);
+    FD_SET(socketFD, &writeFD);
     tvSelect.tv_sec = timeout;
     tvSelect.tv_usec = 0;
 
