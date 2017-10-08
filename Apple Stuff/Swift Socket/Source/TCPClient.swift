@@ -39,3 +39,76 @@
 ///
 
 import Foundation
+
+@_silgen_name("srcTcpSocket_connect") private func TcpSocket_connect(_ host: UnsafePointer<Byte>, port: Int32, timeout: Int32) -> Int32
+
+@_silgen_name("srcTcpSocket_close") private func TcpSocket_close(_ fd: Int32) -> Int32
+
+@_silgen_name("srcTcpSocket_send") private func TcpSocket_send(_ fd: Int32, buff: UnsafePointer<Byte>, len: Int32) -> Int32
+
+@_silgen_name("srcTcpSocket_pull") private func TcpSocket_pull(_ fd: Int32, buff: UnsafePointer<Byte>, len: Int32, timeout: Int32) -> Int32
+
+@_silgen_name("srcTcpSocket_listen") private func TcpSocket_listen(_ address: UnsafePointer<Int8>, port: Int32) -> Int32
+
+@_silgen_name("srcTcpSocket_accept") private func TcpSocket_accept(_ on_socketFD: Int32, remoteIP: UnsafePointer<Int8>, remotePort: UnsafePointer<Int32>, timeout: Int32) -> Int32
+
+@_silgen_name("srcTcpSocket_port") private func TcpSocket_port(_ fd: Int32) -> Int32
+
+open class TCPClient: Socket {
+    /*
+     * 连接到服务器
+     * 用 message 返回成败
+     */
+    open func connect(timeout: Int) -> Result {
+        let res: Int32 = TcpSocket_connect(self.address, port: Int32(self.port), timeout: Int32(timeout))
+        if res > 0 {
+            self.fd = res
+            return .success
+        } else {
+            switch res {
+            case -1:
+                return .failure(SocketError.queryFailed)
+            case -2:
+                return .failure(SocketError.connectionClosed)
+            case -3:
+                return .failure(SocketError.connectionTimeout)
+            default:
+                return .failure(SocketError.unknownError)
+            }
+        }
+    }
+
+    /*
+     * 关闭套接字
+     * 用 message 返回成败
+     */
+    open func close() {
+        guard let fd = self.fd else {
+            return
+        }
+        _ = TcpSocket_close(fd)
+        self.fd = nil
+    }
+
+    /*
+     * 发送数据
+     * 用 message 返回成败
+     */
+    open func send(data: [Byte]) -> Result {
+        guard let fd = self.fd else {
+            return .failure(SocketError.connectionClosed)
+        }
+
+        let sendSize: Int32 = TcpSocket_send(fd, buff: data, len: Int32(data.count))
+        if Int(sendSize) == data.count {
+            return .success
+        } else {
+            return .failure(SocketError.unknownError)
+        }
+    }
+
+    /*
+     * 发送字符串
+     * 用 message 返回成败
+     */
+}

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		62375401B6304708FFE8BD45 /* Socket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62375A06A143EDECDF63335F /* Socket.swift */; };
+		62375F3981CD94AFA30CECBE /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62375ECD6064409193E2A50E /* Result.swift */; };
 		825F0BBC1F8A7C2B005D8A2F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825F0BBB1F8A7C2B005D8A2F /* AppDelegate.swift */; };
 		825F0BBE1F8A7C2B005D8A2F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825F0BBD1F8A7C2B005D8A2F /* ViewController.swift */; };
 		825F0BC11F8A7C2B005D8A2F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 825F0BBF1F8A7C2B005D8A2F /* Main.storyboard */; };
@@ -38,6 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		62375A06A143EDECDF63335F /* Socket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Socket.swift; sourceTree = "<group>"; };
+		62375ECD6064409193E2A50E /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		825F0BB81F8A7C2B005D8A2F /* Swift Socket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Swift Socket.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		825F0BBB1F8A7C2B005D8A2F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		825F0BBD1F8A7C2B005D8A2F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -141,6 +145,8 @@
 				825F0BEA1F8A7CA3005D8A2F /* TCP Client */,
 				825F0BEC1F8A7CB6005D8A2F /* UDP Client */,
 				825F0BF21F8A7D7F005D8A2F /* Supporting Files */,
+				62375A06A143EDECDF63335F /* Socket.swift */,
+				62375ECD6064409193E2A50E /* Result.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -312,6 +318,8 @@
 				825F0BF11F8A7D0C005D8A2F /* srcUdpSocket.c in Sources */,
 				825F0BBE1F8A7C2B005D8A2F /* ViewController.swift in Sources */,
 				825F0BBC1F8A7C2B005D8A2F /* AppDelegate.swift in Sources */,
+				62375401B6304708FFE8BD45 /* Socket.swift in Sources */,
+				62375F3981CD94AFA30CECBE /* Result.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
