@@ -1,5 +1,5 @@
 //
-//  TCPClient.swift
+//  TCPBundle.swift
 //  Swift Socket
 //
 //  Created by 李欣 on 2017/10/8.
@@ -111,4 +111,108 @@ open class TCPClient: Socket {
      * 发送字符串
      * 用 message 返回成败
      */
+    open func send(string: String) -> Result {
+        guard let fd = self.fd else {
+            return .failure(SocketError.connectionClosed)
+        }
+
+        let sendSize = TcpSocket_send(fd, buff: string, len: Int32(strlen(string)))
+        if sendSize == Int32(strlen(string)) {
+            return .success
+        } else {
+            return .failure(SocketError.unknownError)
+        }
+    }
+
+    /*
+     * 发送 NSData
+     * 用 message 返回成败
+     */
+    open func send(data: Data) -> Result {
+        guard let fd = self.fd else {
+            return .failure(SocketError.connectionClosed)
+        }
+
+        var buff = [Byte](repeating: 0x0, count: data.count)
+        (data as NSData).getBytes(&buff, length: data.count)
+        let sendSize = TcpSocket_send(fd, buff: buff, len: Int32(data.count))
+        if (sendSize == Int32(data.count)) {
+            return .success
+        } else {
+            return .failure(SocketError.unknownError)
+        }
+    }
+
+    /*
+     * 读取指定长度的消息
+     * 用 message 返回成败
+     */
+    open func read(_ expectedLen: Int, timeout: Int = -1) -> [Byte]? {
+        guard let fd: Int32 = self.fd else {
+            return nil
+        }
+
+        var buff = [Byte](repeating: 0x0, count: expectedLen)
+        let readLen = TcpSocket_pull(fd, buff: &buff, len: Int32(expectedLen), timeout: Int32(timeout))
+        if (readLen <= 0) {
+            return nil
+        }
+        let readSegment = buff[0...Int(readLen - 1)]
+        let data: [Byte] = Array(readSegment)
+
+        return data
+    }
+}
+
+open class TCPServer: Socket {
+    open func listen() -> Result {
+        let fd = TcpSocket_listen(self.address, port: Int32(self.port))
+        if fd > 0 {
+            self.fd = fd
+
+            /// 如果端口 0 被占用，就切换到服务器监听的端口
+            if (self.port == 0) {
+                let port = TcpSocket_port(fd)
+                if (port == -1) {
+                    return .failure(SocketError.unknownError)
+                } else {
+                    self.port = port
+                }
+            }
+
+            return .success
+        } else {
+            return .failure(SocketError.unknownError)
+        }
+    }
+
+    open func accept(timeout: Int32 = 0) -> TCPClient? {
+        guard let serverFD = self.fd else {
+            return nil
+        }
+
+        var buff: [Int8] = [Int8](repeating: 0x0, count: 16)
+        var port: Int32 = 0
+        let clientFD: Int32 = TcpSocket_accept(serverFD, remoteIP: &buff, remotePort: &port, timeout: timeout)
+
+        guard clientFD >= 0 else {
+            return nil
+        }
+        guard let address = String(cString: buff, encoding: String.Encoding.utf8) else {
+            return nil
+        }
+
+        let client = TCPClient(address: address, port: port)
+        client.fd = clientFD
+        return client
+    }
+
+    open func close() {
+        guard let fd: Int32 = self.fd else {
+            return
+        }
+
+        _ = TcpSocket_close(fd)
+        self.fd = nil
+    }
 }

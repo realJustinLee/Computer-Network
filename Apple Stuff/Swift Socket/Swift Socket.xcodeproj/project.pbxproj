@@ -18,8 +18,8 @@
 		825F0BDC1F8A7C2C005D8A2F /* Swift_SocketUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825F0BDB1F8A7C2C005D8A2F /* Swift_SocketUITests.swift */; };
 		825F0BEF1F8A7CFD005D8A2F /* srcTcpSocket.c in Sources */ = {isa = PBXBuildFile; fileRef = 825F0BEE1F8A7CFD005D8A2F /* srcTcpSocket.c */; };
 		825F0BF11F8A7D0C005D8A2F /* srcUdpSocket.c in Sources */ = {isa = PBXBuildFile; fileRef = 825F0BF01F8A7D0C005D8A2F /* srcUdpSocket.c */; };
-		825F0BF41F8A7DD2005D8A2F /* TCPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825F0BF31F8A7DD2005D8A2F /* TCPClient.swift */; };
-		825F0BF61F8A7DE1005D8A2F /* UDPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825F0BF51F8A7DE1005D8A2F /* UDPClient.swift */; };
+		825F0BF41F8A7DD2005D8A2F /* TCPBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825F0BF31F8A7DD2005D8A2F /* TCPBundle.swift */; };
+		825F0BF61F8A7DE1005D8A2F /* UDPBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825F0BF51F8A7DE1005D8A2F /* UDPBundle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,8 +58,8 @@
 		825F0BED1F8A7CFD005D8A2F /* Swift Socket-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Swift Socket-Bridging-Header.h"; sourceTree = "<group>"; };
 		825F0BEE1F8A7CFD005D8A2F /* srcTcpSocket.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = srcTcpSocket.c; sourceTree = "<group>"; };
 		825F0BF01F8A7D0C005D8A2F /* srcUdpSocket.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = srcUdpSocket.c; sourceTree = "<group>"; };
-		825F0BF31F8A7DD2005D8A2F /* TCPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCPClient.swift; sourceTree = "<group>"; };
-		825F0BF51F8A7DE1005D8A2F /* UDPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UDPClient.swift; sourceTree = "<group>"; };
+		825F0BF31F8A7DD2005D8A2F /* TCPBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCPBundle.swift; sourceTree = "<group>"; };
+		825F0BF51F8A7DE1005D8A2F /* UDPBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UDPBundle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,7 +154,7 @@
 		825F0BEA1F8A7CA3005D8A2F /* TCP Client */ = {
 			isa = PBXGroup;
 			children = (
-				825F0BF31F8A7DD2005D8A2F /* TCPClient.swift */,
+				825F0BF31F8A7DD2005D8A2F /* TCPBundle.swift */,
 				825F0BEE1F8A7CFD005D8A2F /* srcTcpSocket.c */,
 			);
 			name = "TCP Client";
@@ -163,7 +163,7 @@
 		825F0BEC1F8A7CB6005D8A2F /* UDP Client */ = {
 			isa = PBXGroup;
 			children = (
-				825F0BF51F8A7DE1005D8A2F /* UDPClient.swift */,
+				825F0BF51F8A7DE1005D8A2F /* UDPBundle.swift */,
 				825F0BF01F8A7D0C005D8A2F /* srcUdpSocket.c */,
 			);
 			name = "UDP Client";
@@ -312,9 +312,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				825F0BF61F8A7DE1005D8A2F /* UDPClient.swift in Sources */,
+				825F0BF61F8A7DE1005D8A2F /* UDPBundle.swift in Sources */,
 				825F0BEF1F8A7CFD005D8A2F /* srcTcpSocket.c in Sources */,
-				825F0BF41F8A7DD2005D8A2F /* TCPClient.swift in Sources */,
+				825F0BF41F8A7DD2005D8A2F /* TCPBundle.swift in Sources */,
 				825F0BF11F8A7D0C005D8A2F /* srcUdpSocket.c in Sources */,
 				825F0BBE1F8A7C2B005D8A2F /* ViewController.swift in Sources */,
 				825F0BBC1F8A7C2B005D8A2F /* AppDelegate.swift in Sources */,
