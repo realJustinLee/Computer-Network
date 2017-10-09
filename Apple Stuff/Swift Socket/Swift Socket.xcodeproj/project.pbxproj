@@ -142,31 +142,31 @@
 		825F0BE91F8A7C7C005D8A2F /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				825F0BEA1F8A7CA3005D8A2F /* TCP Client */,
-				825F0BEC1F8A7CB6005D8A2F /* UDP Client */,
-				825F0BF21F8A7D7F005D8A2F /* Supporting Files */,
 				62375A06A143EDECDF63335F /* Socket.swift */,
 				62375ECD6064409193E2A50E /* Result.swift */,
+				825F0BEA1F8A7CA3005D8A2F /* TCP Bundle */,
+				825F0BEC1F8A7CB6005D8A2F /* UDP Bundle */,
+				825F0BF21F8A7D7F005D8A2F /* Supporting Files */,
 			);
 			path = Source;
 			sourceTree = "<group>";
 		};
-		825F0BEA1F8A7CA3005D8A2F /* TCP Client */ = {
+		825F0BEA1F8A7CA3005D8A2F /* TCP Bundle */ = {
 			isa = PBXGroup;
 			children = (
 				825F0BF31F8A7DD2005D8A2F /* TCPBundle.swift */,
 				825F0BEE1F8A7CFD005D8A2F /* srcTcpSocket.c */,
 			);
-			name = "TCP Client";
+			name = "TCP Bundle";
 			sourceTree = "<group>";
 		};
-		825F0BEC1F8A7CB6005D8A2F /* UDP Client */ = {
+		825F0BEC1F8A7CB6005D8A2F /* UDP Bundle */ = {
 			isa = PBXGroup;
 			children = (
 				825F0BF51F8A7DE1005D8A2F /* UDPBundle.swift */,
 				825F0BF01F8A7D0C005D8A2F /* srcUdpSocket.c */,
 			);
-			name = "UDP Client";
+			name = "UDP Bundle";
 			sourceTree = "<group>";
 		};
 		825F0BF21F8A7D7F005D8A2F /* Supporting Files */ = {
