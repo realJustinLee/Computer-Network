@@ -116,4 +116,101 @@ open class UDPClient: Socket {
 
         enable_broadcast(fd)
     }
+
+    /*
+     * 发送 NSData
+     * 用 message 返回成败
+     */
+    open func send(data: Data) -> Result {
+        guard let fd = self.fd else {
+            return .failure(SocketError.connectionClosed)
+        }
+
+        var buff = [Byte](repeating: 0x0, count: data.count)
+        (data as NSData).getBytes(&buff, length: data.count)
+        let sendSize = UdpSocket_sent_to(fd, buff: buff, len: Int32(data.count), ip: address, port: port)
+        if sendSize == Int32(data.count) {
+            return .success
+        } else {
+            return .failure(SocketError.unknownError)
+        }
+    }
+
+    /*
+     * 接收消息
+     */
+    /// TODO: Add multicast and broadcast
+    open func recv(_ expectedLen: Int) -> ([Byte]?, String, Int) {
+        guard let fd = self.fd else {
+            return (nil, "no ip", 0)
+        }
+        var buff: [Byte] = [Byte](repeating: 0x0, count: expectedLen)
+        var remoteIP_buff: [Int8] = [Int8](repeating: 0x0, count: expectedLen)
+        var remotePort: Int32 = 0
+        let readLen: Int32 = UdpSocket_receive(fd, buff: buff, len: Int32(expectedLen), ip: &remoteIP_buff, port: &remotePort)
+        let port: Int = Int(remotePort)
+        let address = String(cString: remoteIP_buff, encoding: String.Encoding.utf8) ?? ""
+
+        if readLen <= 0 {
+            return (nil, address, port)
+        }
+
+        let data: [Byte] = Array(buff[0..<Int(readLen)])
+        return (data, address, port)
+    }
+
+    open func close() {
+        guard let fd = self.fd else {
+            return
+        }
+
+        _ = UdpSocket_close(fd)
+        self.fd = nil
+    }
+
+    /// TODO: Add multicast and broadcast
+}
+
+open class UDPServer: Socket {
+    public override init(address: String, port: Int32) {
+        super.init(address: address, port: port)
+
+        let fd = UdpSocket_server(address, port: port)
+        if fd > 0 {
+            self.fd = fd
+        }
+    }
+
+    /// TODO: Add multicast and broadcast
+    open func recv(_ expectedLen: Int) -> ([Byte]?, String, Int) {
+        if let fd = self.fd {
+            var buff: [Byte] = [Byte](repeating: 0x0, count: expectedLen)
+            var remoteIP_buff: [Int8] = [Int8](repeating: 0x0, count: 16)
+            var remotePort: Int32 = 0
+            let readLen: Int32 = UdpSocket_receive(fd, buff: buff, len: Int32(expectedLen), ip: &remoteIP_buff, port: &remotePort)
+            let port: Int = Int(remotePort)
+            var address = ""
+            if let ip = String(cString: remoteIP_buff, encoding: String.Encoding.utf8) {
+                address = ip
+            }
+
+            if readLen <= 0 {
+                return (nil, address, port)
+            }
+
+            let readSegment = buff[0...Int(readLen - 1)]
+            let data: [Byte] = Array(readSegment)
+            return (data, address, port)
+        }
+        return (nil, "No IP provided", 0)
+    }
+
+    open func close() {
+        guard let fd = self.fd else {
+            return
+        }
+
+        _ = UdpSocket_close(fd)
+        self.fd = nil
+    }
 }
