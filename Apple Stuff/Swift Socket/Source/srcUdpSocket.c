@@ -86,8 +86,7 @@ int srcUdpSocket_receive(int socketFD, char *outData, int expectedLen, char *rem
     struct sockaddr_in clientAddress;
     socklen_t clientLen = sizeof(clientAddress);
     bzero(&clientAddress, sizeof(struct sockaddr_in));
-    int len = (int) recvfrom(socketFD, outData, (size_t) expectedLen, 0, (struct sockaddr *) &clientAddress,
-                             &clientLen);
+    int len = (int) recvfrom(socketFD, outData, (size_t) expectedLen, 0, (struct sockaddr *) &clientAddress, &clientLen);
     char *clientIP = inet_ntoa(clientAddress.sin_addr);
     memcpy(remoteIP, clientIP, strlen(clientIP));
     *remotePort = clientAddress.sin_port;
@@ -109,7 +108,7 @@ int srcUdpSocket_client() {
     return socketFD;
 }
 
-/// 广播功能
+/// 开启广播功能
 void enable_broadcast(int socketFD) {
     int reuseON = 1;
     setsockopt(socketFD, SOL_SOCKET, SO_BROADCAST, &reuseON, sizeof(reuseON));
@@ -132,7 +131,7 @@ int srcUdpSocket_get_server_ip(char *host, char *ip) {
 }
 
 /// 向 地址:端口 发送消息
-int srcUdpSocket_sentto(int socketFD, char *msg, int len, char *desAddress, int desPort) {
+int srcUdpSocket_sent_to(int socketFD, char *msg, int len, char *desAddress, int desPort) {
     struct sockaddr_in address;
     bzero(&address, sizeof(struct sockaddr_in));
     address.sin_family = AF_INET;

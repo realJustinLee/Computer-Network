@@ -39,3 +39,81 @@
 ///
 
 import Foundation
+
+@_silgen_name("srcUdpSocket_server") func UdpSocket_server(_ host: UnsafePointer<Int8>, port: Int32) -> Int32
+
+@_silgen_name("srcUdpSocket_receive") func UdpSocket_receive(_ fd: Int32, buff: UnsafePointer<Byte>, len: Int32, ip: UnsafePointer<Int8>, port: UnsafePointer<Int32>) -> Int32
+
+@_silgen_name("srcUdpSocket_close") func UdpSocket_close(_ fd: Int32) -> Int32
+
+@_silgen_name("srcUdpSocket_client") func UdpSocket_client() -> Int32
+
+@_silgen_name("srcUdpSocket_get_server_ip") func UdpSocket_get_server_ip(_ host: UnsafePointer<Int8>, ip: UnsafePointer<Int8>) -> Int32
+
+@_silgen_name("srcUdpSocket_sent_to") func UdpSocket_sent_to(_ fd: Int32, buff: UnsafePointer<Byte>, len: Int32, ip: UnsafePointer<Int8>, port: Int32) -> Int32
+
+@_silgen_name("enable_broadcast") func enable_broadcast(_ fd: Int32)
+
+open class UDPClient: Socket {
+    public override init(address: String, port: Int32) {
+        let remoteIP_buff: [Int8] = [Int8](repeating: 0x0, count: 16)
+        let ret = UdpSocket_get_server_ip(address, ip: remoteIP_buff)
+        guard let ip = String(cString: remoteIP_buff, encoding: String.Encoding.utf8), ret == 0 else {
+            /// TODO: change to init?
+            super.init(address: "", port: 0)
+            return
+        }
+
+        super.init(address: ip, port: port)
+
+        let fd: Int32 = UdpSocket_client()
+        if fd > 0 {
+            self.fd = fd
+        }
+    }
+
+    /*
+     * 发送数据
+     * 用 message 返回成败
+     */
+    open func send(data: [Byte]) -> Result {
+        guard let fd = self.fd else {
+            return .failure(SocketError.connectionClosed)
+        }
+
+        let sendSize: Int32 = UdpSocket_sent_to(fd, buff: data, len: Int32(data.count), ip: self.address, port: Int32(self.port))
+        if Int(sendSize) == data.count {
+            return .success
+        } else {
+            return .failure(SocketError.unknownError)
+        }
+    }
+
+    /*
+     * 发送字符串
+     * 用 message 返回成败
+     */
+    open func send(string: String) -> Result {
+        guard let fd = self.fd else {
+            return .failure(SocketError.connectionClosed)
+        }
+
+        let sendSize = UdpSocket_sent_to(fd, buff: string, len: Int32(strlen(string)), ip: address, port: port)
+        if sendSize == Int32(strlen(string)) {
+            return .success
+        } else {
+            return .failure(SocketError.unknownError)
+        }
+    }
+
+    /*
+     * 开启广播功能
+     */
+    open func enableBroadcast() {
+        guard let fd: Int32 = self.fd else {
+            return
+        }
+
+        enable_broadcast(fd)
+    }
+}

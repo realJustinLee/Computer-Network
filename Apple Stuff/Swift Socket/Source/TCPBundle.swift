@@ -50,7 +50,7 @@ import Foundation
 
 @_silgen_name("srcTcpSocket_listen") private func TcpSocket_listen(_ address: UnsafePointer<Int8>, port: Int32) -> Int32
 
-@_silgen_name("srcTcpSocket_accept") private func TcpSocket_accept(_ on_socketFD: Int32, remoteIP: UnsafePointer<Int8>, remotePort: UnsafePointer<Int32>, timeout: Int32) -> Int32
+@_silgen_name("srcTcpSocket_accept") private func TcpSocket_accept(_ on_socketFD: Int32, ip: UnsafePointer<Int8>, port: UnsafePointer<Int32>, timeout: Int32) -> Int32
 
 @_silgen_name("srcTcpSocket_port") private func TcpSocket_port(_ fd: Int32) -> Int32
 
@@ -193,7 +193,7 @@ open class TCPServer: Socket {
 
         var buff: [Int8] = [Int8](repeating: 0x0, count: 16)
         var port: Int32 = 0
-        let clientFD: Int32 = TcpSocket_accept(serverFD, remoteIP: &buff, remotePort: &port, timeout: timeout)
+        let clientFD: Int32 = TcpSocket_accept(serverFD, ip: &buff, port: &port, timeout: timeout)
 
         guard clientFD >= 0 else {
             return nil
