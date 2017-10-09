@@ -145,7 +145,7 @@ open class UDPClient: Socket {
             return (nil, "no ip", 0)
         }
         var buff: [Byte] = [Byte](repeating: 0x0, count: expectedLen)
-        var remoteIP_buff: [Int8] = [Int8](repeating: 0x0, count: expectedLen)
+        var remoteIP_buff: [Int8] = [Int8](repeating: 0x0, count: 16)
         var remotePort: Int32 = 0
         let readLen: Int32 = UdpSocket_receive(fd, buff: buff, len: Int32(expectedLen), ip: &remoteIP_buff, port: &remotePort)
         let port: Int = Int(remotePort)
