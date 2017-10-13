@@ -1,4 +1,4 @@
-# Install script for directory: /Users/lixin/GitHub/C-Works/Computer Network/Unix Server
+# Install script for directory: /Users/lixin/GitHub/Computer-Network/Unix Server
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -35,5 +35,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/Users/lixin/GitHub/C-Works/Computer Network/Unix Server/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Users/lixin/GitHub/Computer-Network/Unix Server/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
