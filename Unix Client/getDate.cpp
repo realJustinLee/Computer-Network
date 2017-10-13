@@ -44,7 +44,13 @@ int main(int argc, char *argv[]) {
     address.sin_addr = *(struct in_addr *) *hostInfo->h_addr_list;
     len = sizeof(address);
 
-    result = connect(socketFD, (struct sockaddr *) &address, len);
+    result = connect(socketFD, (struct sockaddr *) &address, static_cast<socklen_t>(len));
+    if (result == -1) {
+        perror("oops: getDate");
+        exit(1);
+    }
+
+    result = static_cast<int>(read(socketFD, buffer, sizeof(buffer)));
     buffer[result] = '\0';
     printf("read %d bytes: %s", result, buffer);
 
