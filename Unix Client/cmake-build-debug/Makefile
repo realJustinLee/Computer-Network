@@ -123,32 +123,32 @@ Unix_Client/fast:
 	$(MAKE) -f CMakeFiles/Unix_Client.dir/build.make CMakeFiles/Unix_Client.dir/build
 .PHONY : Unix_Client/fast
 
-v2.o: v2.cpp.o
+getDate.o: getDate.cpp.o
 
-.PHONY : v2.o
+.PHONY : getDate.o
 
 # target to build an object file
-v2.cpp.o:
-	$(MAKE) -f CMakeFiles/Unix_Client.dir/build.make CMakeFiles/Unix_Client.dir/v2.cpp.o
-.PHONY : v2.cpp.o
+getDate.cpp.o:
+	$(MAKE) -f CMakeFiles/Unix_Client.dir/build.make CMakeFiles/Unix_Client.dir/getDate.cpp.o
+.PHONY : getDate.cpp.o
 
-v2.i: v2.cpp.i
+getDate.i: getDate.cpp.i
 
-.PHONY : v2.i
+.PHONY : getDate.i
 
 # target to preprocess a source file
-v2.cpp.i:
-	$(MAKE) -f CMakeFiles/Unix_Client.dir/build.make CMakeFiles/Unix_Client.dir/v2.cpp.i
-.PHONY : v2.cpp.i
+getDate.cpp.i:
+	$(MAKE) -f CMakeFiles/Unix_Client.dir/build.make CMakeFiles/Unix_Client.dir/getDate.cpp.i
+.PHONY : getDate.cpp.i
 
-v2.s: v2.cpp.s
+getDate.s: getDate.cpp.s
 
-.PHONY : v2.s
+.PHONY : getDate.s
 
 # target to generate assembly for a file
-v2.cpp.s:
-	$(MAKE) -f CMakeFiles/Unix_Client.dir/build.make CMakeFiles/Unix_Client.dir/v2.cpp.s
-.PHONY : v2.cpp.s
+getDate.cpp.s:
+	$(MAKE) -f CMakeFiles/Unix_Client.dir/build.make CMakeFiles/Unix_Client.dir/getDate.cpp.s
+.PHONY : getDate.cpp.s
 
 # Help Target
 help:
@@ -159,9 +159,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... Unix_Client"
-	@echo "... v2.o"
-	@echo "... v2.i"
-	@echo "... v2.s"
+	@echo "... getDate.o"
+	@echo "... getDate.i"
+	@echo "... getDate.s"
 .PHONY : help
 
 
