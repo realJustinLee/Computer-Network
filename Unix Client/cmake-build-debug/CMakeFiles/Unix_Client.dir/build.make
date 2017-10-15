@@ -57,38 +57,38 @@ include CMakeFiles/Unix_Client.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/Unix_Client.dir/flags.make
 
-CMakeFiles/Unix_Client.dir/getDate.cpp.o: CMakeFiles/Unix_Client.dir/flags.make
-CMakeFiles/Unix_Client.dir/getDate.cpp.o: ../getDate.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/lixin/GitHub/Computer-Network/Unix Client/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Unix_Client.dir/getDate.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Unix_Client.dir/getDate.cpp.o -c "/Users/lixin/GitHub/Computer-Network/Unix Client/getDate.cpp"
+CMakeFiles/Unix_Client.dir/v2.cpp.o: CMakeFiles/Unix_Client.dir/flags.make
+CMakeFiles/Unix_Client.dir/v2.cpp.o: ../v2.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/lixin/GitHub/Computer-Network/Unix Client/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Unix_Client.dir/v2.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Unix_Client.dir/v2.cpp.o -c "/Users/lixin/GitHub/Computer-Network/Unix Client/v2.cpp"
 
-CMakeFiles/Unix_Client.dir/getDate.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Unix_Client.dir/getDate.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/lixin/GitHub/Computer-Network/Unix Client/getDate.cpp" > CMakeFiles/Unix_Client.dir/getDate.cpp.i
+CMakeFiles/Unix_Client.dir/v2.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Unix_Client.dir/v2.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/lixin/GitHub/Computer-Network/Unix Client/v2.cpp" > CMakeFiles/Unix_Client.dir/v2.cpp.i
 
-CMakeFiles/Unix_Client.dir/getDate.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Unix_Client.dir/getDate.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/lixin/GitHub/Computer-Network/Unix Client/getDate.cpp" -o CMakeFiles/Unix_Client.dir/getDate.cpp.s
+CMakeFiles/Unix_Client.dir/v2.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Unix_Client.dir/v2.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/lixin/GitHub/Computer-Network/Unix Client/v2.cpp" -o CMakeFiles/Unix_Client.dir/v2.cpp.s
 
-CMakeFiles/Unix_Client.dir/getDate.cpp.o.requires:
+CMakeFiles/Unix_Client.dir/v2.cpp.o.requires:
 
-.PHONY : CMakeFiles/Unix_Client.dir/getDate.cpp.o.requires
+.PHONY : CMakeFiles/Unix_Client.dir/v2.cpp.o.requires
 
-CMakeFiles/Unix_Client.dir/getDate.cpp.o.provides: CMakeFiles/Unix_Client.dir/getDate.cpp.o.requires
-	$(MAKE) -f CMakeFiles/Unix_Client.dir/build.make CMakeFiles/Unix_Client.dir/getDate.cpp.o.provides.build
-.PHONY : CMakeFiles/Unix_Client.dir/getDate.cpp.o.provides
+CMakeFiles/Unix_Client.dir/v2.cpp.o.provides: CMakeFiles/Unix_Client.dir/v2.cpp.o.requires
+	$(MAKE) -f CMakeFiles/Unix_Client.dir/build.make CMakeFiles/Unix_Client.dir/v2.cpp.o.provides.build
+.PHONY : CMakeFiles/Unix_Client.dir/v2.cpp.o.provides
 
-CMakeFiles/Unix_Client.dir/getDate.cpp.o.provides.build: CMakeFiles/Unix_Client.dir/getDate.cpp.o
+CMakeFiles/Unix_Client.dir/v2.cpp.o.provides.build: CMakeFiles/Unix_Client.dir/v2.cpp.o
 
 
 # Object files for target Unix_Client
 Unix_Client_OBJECTS = \
-"CMakeFiles/Unix_Client.dir/getDate.cpp.o"
+"CMakeFiles/Unix_Client.dir/v2.cpp.o"
 
 # External object files for target Unix_Client
 Unix_Client_EXTERNAL_OBJECTS =
 
-Unix_Client: CMakeFiles/Unix_Client.dir/getDate.cpp.o
+Unix_Client: CMakeFiles/Unix_Client.dir/v2.cpp.o
 Unix_Client: CMakeFiles/Unix_Client.dir/build.make
 Unix_Client: CMakeFiles/Unix_Client.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/Users/lixin/GitHub/Computer-Network/Unix Client/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable Unix_Client"
@@ -99,7 +99,7 @@ CMakeFiles/Unix_Client.dir/build: Unix_Client
 
 .PHONY : CMakeFiles/Unix_Client.dir/build
 
-CMakeFiles/Unix_Client.dir/requires: CMakeFiles/Unix_Client.dir/getDate.cpp.o.requires
+CMakeFiles/Unix_Client.dir/requires: CMakeFiles/Unix_Client.dir/v2.cpp.o.requires
 
 .PHONY : CMakeFiles/Unix_Client.dir/requires
 
