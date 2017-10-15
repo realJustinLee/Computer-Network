@@ -1,12 +1,13 @@
-/*  This program, server4.c, begins in similar vein to our last server,
-    with the notable addition of an include for the signal.h header file.
-    The variables and the procedure of creating and naming a socket are the same.  */
+/*  For our final example, server5.c,
+    we include the sys/time.h and sys/ioctl.h headers in place of signal.h
+    in our last program and declare some extra variables to deal with select.  */
 
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <stdio.h>
 #include <netinet/in.h>
-#include <signal.h>
+#include <sys/time.h>
+#include <sys/ioctl.h>
 #include <unistd.h>
 #include <stdlib.h>
 
@@ -16,6 +17,10 @@ int main()
     int server_len, client_len;
     struct sockaddr_in server_address;
     struct sockaddr_in client_address;
+    int result;
+    fd_set readfds, testfds;
+
+/*  Create and name a socket for the server.  */
 
     server_sockfd = socket(AF_INET, SOCK_STREAM, 0);
 
@@ -23,46 +28,75 @@ int main()
     server_address.sin_addr.s_addr = htonl(INADDR_ANY);
     server_address.sin_port = htons(9734);
     server_len = sizeof(server_address);
+
     bind(server_sockfd, (struct sockaddr *)&server_address, server_len);
 
-/*  Create a connection queue, ignore child exit details and wait for clients.  */
+/*  Create a connection queue and initialize readfds to handle input from server_sockfd.  */
 
     listen(server_sockfd, 5);
 
-    signal(SIGCHLD, SIG_IGN);
+    FD_ZERO(&readfds);
+    FD_SET(server_sockfd, &readfds);
+
+/*  Now wait for clients and requests.
+    Since we have passed a null pointer as the timeout parameter, no timeout will occur.
+    The program will exit and report an error if select returns a value of less than 1.  */
 
     while(1) {
         char ch;
+        int fd;
+        int nread;
+
+        testfds = readfds;
 
         printf("server waiting\n");
+        result = select(FD_SETSIZE, &testfds, (fd_set *)0,
+                        (fd_set *)0, (struct timeval *) 0);
 
-/*  Accept connection.  */
-
-        client_len = sizeof(client_address);
-        client_sockfd = accept(server_sockfd,
-                               (struct sockaddr *)&client_address, &client_len);
-
-/*  Fork to create a process for this client and perform a test to see
-    whether we're the parent or the child.  */
-
-        if(fork() == 0) {
-
-/*  If we're the child, we can now read/write to the client on client_sockfd.
-    The five second delay is just for this demonstration.  */
-
-            read(client_sockfd, &ch, 1);
-            sleep(5);
-            ch++;
-            write(client_sockfd, &ch, 1);
-            close(client_sockfd);
-            exit(0);
+        if(result < 1) {
+            perror("server5");
+            exit(1);
         }
 
-/*  Otherwise, we must be the parent and our work for this client is finished.  */
+/*  Once we know we've got activity,
+    we find which descriptor it's on by checking each in turn using FD_ISSET.  */
 
-        else {
-            close(client_sockfd);
+        for(fd = 0; fd < FD_SETSIZE; fd++) {
+            if(FD_ISSET(fd,&testfds)) {
+
+/*  If the activity is on server_sockfd, it must be a request for a new connection
+    and we add the associated client_sockfd to the descriptor set.  */
+
+                if(fd == server_sockfd) {
+                    client_len = sizeof(client_address);
+                    client_sockfd = accept(server_sockfd,
+                                           (struct sockaddr *)&client_address, &client_len);
+                    FD_SET(client_sockfd, &readfds);
+                    printf("adding client on fd %d\n", client_sockfd);
+                }
+
+/*  If it isn't the server, it must be client activity.
+    If close is received, the client has gone away and we remove it from the descriptor set.
+    Otherwise, we 'serve' the client as in the previous examples.  */
+
+                else {
+                    ioctl(fd, FIONREAD, &nread);
+
+                    if(nread == 0) {
+                        close(fd);
+                        FD_CLR(fd, &readfds);
+                        printf("removing client on fd %d\n", fd);
+                    }
+
+                    else {
+                        read(fd, &ch, 1);
+                        sleep(5);
+                        printf("serving client on fd %d\n", fd);
+                        ch++;
+                        write(fd, &ch, 1);
+                    }
+                }
+            }
         }
     }
 }
-
