@@ -123,32 +123,32 @@ Unix_Client/fast:
 	$(MAKE) -f CMakeFiles/Unix_Client.dir/build.make CMakeFiles/Unix_Client.dir/build
 .PHONY : Unix_Client/fast
 
-v2.o: v2.cpp.o
+getDate-UDP.o: getDate-UDP.cpp.o
 
-.PHONY : v2.o
+.PHONY : getDate-UDP.o
 
 # target to build an object file
-v2.cpp.o:
-	$(MAKE) -f CMakeFiles/Unix_Client.dir/build.make CMakeFiles/Unix_Client.dir/v2.cpp.o
-.PHONY : v2.cpp.o
+getDate-UDP.cpp.o:
+	$(MAKE) -f CMakeFiles/Unix_Client.dir/build.make CMakeFiles/Unix_Client.dir/getDate-UDP.cpp.o
+.PHONY : getDate-UDP.cpp.o
 
-v2.i: v2.cpp.i
+getDate-UDP.i: getDate-UDP.cpp.i
 
-.PHONY : v2.i
+.PHONY : getDate-UDP.i
 
 # target to preprocess a source file
-v2.cpp.i:
-	$(MAKE) -f CMakeFiles/Unix_Client.dir/build.make CMakeFiles/Unix_Client.dir/v2.cpp.i
-.PHONY : v2.cpp.i
+getDate-UDP.cpp.i:
+	$(MAKE) -f CMakeFiles/Unix_Client.dir/build.make CMakeFiles/Unix_Client.dir/getDate-UDP.cpp.i
+.PHONY : getDate-UDP.cpp.i
 
-v2.s: v2.cpp.s
+getDate-UDP.s: getDate-UDP.cpp.s
 
-.PHONY : v2.s
+.PHONY : getDate-UDP.s
 
 # target to generate assembly for a file
-v2.cpp.s:
-	$(MAKE) -f CMakeFiles/Unix_Client.dir/build.make CMakeFiles/Unix_Client.dir/v2.cpp.s
-.PHONY : v2.cpp.s
+getDate-UDP.cpp.s:
+	$(MAKE) -f CMakeFiles/Unix_Client.dir/build.make CMakeFiles/Unix_Client.dir/getDate-UDP.cpp.s
+.PHONY : getDate-UDP.cpp.s
 
 # Help Target
 help:
@@ -159,9 +159,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... Unix_Client"
-	@echo "... v2.o"
-	@echo "... v2.i"
-	@echo "... v2.s"
+	@echo "... getDate-UDP.o"
+	@echo "... getDate-UDP.i"
+	@echo "... getDate-UDP.s"
 .PHONY : help
 
 

@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/Unix_Client.dir/v2.cpp.o"
+  "CMakeFiles/Unix_Client.dir/getDate-UDP.cpp.o"
   "Unix_Client.pdb"
   "Unix_Client"
 )

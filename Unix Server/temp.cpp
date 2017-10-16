@@ -32,33 +32,26 @@ int main(int argc, char *argv[])
 
 /*  Check that the daytime service exists on the host.  */
 
-    servinfo = getservbyname("daytime", "tcp");
+    servinfo = getservbyname("daytime", "udp");
     if(!servinfo) {
         fprintf(stderr,"no daytime service\n");
         exit(1);
     }
     printf("daytime port is %d\n", ntohs(servinfo -> s_port));
 
-/*  Create a socket.  */
+/*  Create a UDP socket.  */
 
-    sockfd = socket(AF_INET, SOCK_STREAM, 0);
+    sockfd = socket(AF_INET, SOCK_DGRAM, 0);
 
-/*  Construct the address for use with connect...  */
+/*  Construct the address for use with sendto/recvfrom...  */
 
     address.sin_family = AF_INET;
     address.sin_port = servinfo -> s_port;
     address.sin_addr = *(struct in_addr *)*hostinfo -> h_addr_list;
     len = sizeof(address);
 
-/*  ...then connect and get the information.  */
-
-    result = connect(sockfd, (struct sockaddr *)&address, len);
-    if(result == -1) {
-        perror("oops: getdate");
-        exit(1);
-    }
-
-    result = read(sockfd, buffer, sizeof(buffer));
+    result = sendto(sockfd, buffer, 1, 0, (struct sockaddr *)&address, len);
+    result = recvfrom(sockfd, buffer, sizeof(buffer), 0, (struct sockaddr *)&address, &len);
     buffer[result] = '\0';
     printf("read %d bytes: %s", result, buffer);
 

@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/Users/lixin/GitHub/Computer-Network/Unix Client/v2.cpp" "/Users/lixin/GitHub/Computer-Network/Unix Client/cmake-build-debug/CMakeFiles/Unix_Client.dir/v2.cpp.o"
+  "/Users/lixin/GitHub/Computer-Network/Unix Client/getDate-UDP.cpp" "/Users/lixin/GitHub/Computer-Network/Unix Client/cmake-build-debug/CMakeFiles/Unix_Client.dir/getDate-UDP.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "AppleClang")
 
