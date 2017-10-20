@@ -1,5 +1,5 @@
 //
-// Created by 李欣 on 2017/10/19.
+// Created by 李欣 on 2017/10/9.
 //
 
 #include <stdlib.h>
@@ -12,10 +12,12 @@
 #include <net/if.h>
 #include <signal.h>
 #include <arpa/inet.h>
+#include <netinet/ip.h>
 #include <netinet/ip_icmp.h>
 #include <netinet/if_ether.h>
 #include <strings.h>
 #include <ctype.h>
+#include <netinet/ip.h>
 
 #define ETH_HW_ADDR_LEN 6
 #define IP_ADDR_LEN 4
@@ -123,7 +125,7 @@ int main(int argc, char *argv[]) {
     memcpy(pkt.rcpt_hw_addr, &targ_in_addr, IP_ADDR_LEN);
     bzero(sa.sa_data, DEFAULT_DEVICE);
     for (int i = 0; i < number; ++i) {
-        if (sendto(sock, sizeof(), 0, &sa, sizeof(sa)) < 0) {
+        if (sendto(sock,&pkt, sizeof(pkt), 0, &sa, sizeof(sa)) < 0) {
             perror("sendto");
             exit(1);
         }
